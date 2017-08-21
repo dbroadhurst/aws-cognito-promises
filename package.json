@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/dbroadhurst/aws-cognito-promises"
   },
-  "keywords": [],
+  "keywords": ["aws", "cognito", "promises", "users", "account"],
   "author": "",
   "license": "MIT",
   "dependencies": {
