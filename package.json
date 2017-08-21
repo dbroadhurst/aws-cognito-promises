@@ -1,6 +1,6 @@
 {
   "name": "aws-cognito-promises",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "aws cognito promise library",
   "main": "./dist/index.js",
   "scripts": {
@@ -12,7 +12,13 @@
     "type": "git",
     "url": "https://github.com/dbroadhurst/aws-cognito-promises"
   },
-  "keywords": ["aws", "cognito", "promises", "users", "account"],
+  "keywords": [
+    "aws",
+    "cognito",
+    "promises",
+    "users",
+    "account"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
