@@ -1,25 +1,20 @@
 {
   "name": "aws-cognito-promises",
   "version": "1.0.1",
-  "description": "aws cognito promise library",
+  "description": "AWS Cognito promise library",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dbroadhurst/aws-cognito-promises"
+  },
   "main": "./dist/index.js",
   "scripts": {
     "start": "webpack --watch",
     "build": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dbroadhurst/aws-cognito-promises"
-  },
-  "keywords": [
-    "aws",
-    "cognito",
-    "promises",
-    "users",
-    "account"
-  ],
-  "author": "",
+  "keywords": ["aws", "cognito", "promises", "users", "account"],
+  "author": "David Broadhurst",
+  "homepage": "http://cognito.dbroadhurst.net",
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.23.0",
