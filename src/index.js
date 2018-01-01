@@ -1,19 +1,19 @@
-import authRegister from './register'
+import register from './register'
 import confirmation from './confirmation'
-import authSignIn from './authenticate'
-import authSignOut from './signOut'
+import signIn from './authenticate'
+import signOut from './signOut'
 import getSession from './getSession'
-import authForgotPassword from './forgotPassword'
-import authChangePassword from './changePassword'
+import forgotPassword from './forgotPassword'
+import changePassword from './changePassword'
 import * as config from './config'
 
 export {
-  authRegister,
+  register,
   confirmation,
-  authSignIn,
-  authSignOut,
+  signIn,
+  signOut,
   getSession,
-  authForgotPassword,
-  authChangePassword,
+  forgotPassword,
+  changePassword,
   config
 }

@@ -1,2 +1,433 @@
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t(require("amazon-cognito-identity-js"),require("aws-sdk")):"function"==typeof define&&define.amd?define(["amazon-cognito-identity-js","aws-sdk"],t):"object"==typeof exports?exports["aws-cognito-promises"]=t(require("amazon-cognito-identity-js"),require("aws-sdk")):e["aws-cognito-promises"]=t(e["amazon-cognito-identity-js"],e["aws-sdk"])}("undefined"!=typeof self?self:this,function(e,t){return function(e){function t(o){if(n[o])return n[o].exports;var r=n[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,t),r.l=!0,r.exports}var n={};return t.m=e,t.c=n,t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=2)}([function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.getUser=t.getUserPool=t.get=t.set=void 0;var o=n(5),r=n(1),i=void 0,u=void 0;t.set=function(e){i=e,o.Config.region=i.region,o.Config.credentials=new o.CognitoIdentityCredentials({IdentityPoolId:i.IdentityPoolId}),u=new r.CognitoUserPool({UserPoolId:i.UserPoolId,ClientId:i.ClientId})},t.get=function(){return i},t.getUserPool=function(){return u},t.getUser=function(){return u.getCurrentUser()}},function(t,n){t.exports=e},function(e,t,n){e.exports=n(3)},function(e,t,n){"use strict";function o(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0}),t.config=t.authChangePassword=t.authForgotPassword=t.getSession=t.authSignOut=t.authSignIn=t.confirmation=t.authRegister=void 0;var r=n(4),i=o(r),u=n(6),s=o(u),a=n(7),f=o(a),c=n(8),l=o(c),d=n(9),g=o(d),P=n(10),v=o(P),p=n(11),w=o(p),m=n(0),U=function(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}(m);t.authRegister=i.default,t.confirmation=s.default,t.authSignIn=f.default,t.authSignOut=l.default,t.getSession=g.default,t.authForgotPassword=v.default,t.authChangePassword=w.default,t.config=U},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(e,t){var n=(0,r.getUserPool)(),i=[new o.CognitoUserAttribute({Name:"email",Value:e})];return new Promise(function(o,r){n.signUp(e,t,i,null,function(e,t){e?r(e):o(t)})})};var o=n(1),r=n(0)},function(e,n){e.exports=t},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(e,t){var n={Username:e,Pool:(0,r.getUserPool)()},i=new o.CognitoUser(n);return new Promise(function(e,n){i.confirmRegistration(t,!0,function(t,o){t?n(t):e(o)})})};var o=n(1),r=n(0)},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(e,t){var n={Username:e,Password:t},i=new o.AuthenticationDetails(n),u={Username:e,Pool:(0,r.getUserPool)()},s=new o.CognitoUser(u);return new Promise(function(e,t){s.authenticateUser(i,{onSuccess:function(t){e(t)},onFailure:function(e){t(e)}})})};var o=n(1),r=n(0)},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(){var e=(0,o.getUser)();if(!e)throw new Error("no cognitiveUser value");e.signOut(),Promise.resolve()};var o=n(0)},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(){var e=(0,o.getUser)();if(e)return new Promise(function(t,n){e.getSession(function(e,o){e?n(e):t(o)})});throw new Error("no cognitiveUser value")};var o=n(0)},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(e){var t={Username:e,Pool:(0,r.getUserPool)()},n=new o.CognitoUser(t);return new Promise(function(e,t){n.forgotPassword({onSuccess:function(t){e(t)},onFailure:function(e){t(e)}})})};var o=n(1),r=n(0)},function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0}),t.default=function(e,t,n){var i={Username:e,Pool:(0,r.getUserPool)()},u=new o.CognitoUser(i);return new Promise(function(e,o){u.confirmPassword(t,n,{onSuccess:function(t){e(t)},onFailure:function(e){o(e)}})})};var o=n(1),r=n(0)}])});
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("amazon-cognito-identity-js"), require("aws-sdk"));
+	else if(typeof define === 'function' && define.amd)
+		define(["amazon-cognito-identity-js", "aws-sdk"], factory);
+	else if(typeof exports === 'object')
+		exports["aws-cognito-promises"] = factory(require("amazon-cognito-identity-js"), require("aws-sdk"));
+	else
+		root["aws-cognito-promises"] = factory(root["amazon-cognito-identity-js"], root["aws-sdk"]);
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_5__) {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getUser = exports.getUserPool = exports.get = exports.set = undefined;
+
+var _awsSdk = __webpack_require__(5);
+
+var _amazonCognitoIdentityJs = __webpack_require__(1);
+
+var appConfig = void 0;
+var userPool = void 0;
+
+var set = exports.set = function set(config) {
+  appConfig = config;
+
+  _awsSdk.Config.region = appConfig.region;
+  _awsSdk.Config.credentials = new _awsSdk.CognitoIdentityCredentials({
+    IdentityPoolId: appConfig.IdentityPoolId
+  });
+
+  userPool = new _amazonCognitoIdentityJs.CognitoUserPool({
+    UserPoolId: appConfig.UserPoolId,
+    ClientId: appConfig.ClientId
+  });
+};
+
+var get = exports.get = function get() {
+  return appConfig;
+};
+
+var getUserPool = exports.getUserPool = function getUserPool() {
+  return userPool;
+};
+
+var getUser = exports.getUser = function getUser() {
+  return userPool.getCurrentUser();
+};
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(3);
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.config = exports.changePassword = exports.forgotPassword = exports.getSession = exports.signOut = exports.signIn = exports.confirmation = exports.register = undefined;
+
+var _register = __webpack_require__(4);
+
+var _register2 = _interopRequireDefault(_register);
+
+var _confirmation = __webpack_require__(6);
+
+var _confirmation2 = _interopRequireDefault(_confirmation);
+
+var _authenticate = __webpack_require__(7);
+
+var _authenticate2 = _interopRequireDefault(_authenticate);
+
+var _signOut = __webpack_require__(8);
+
+var _signOut2 = _interopRequireDefault(_signOut);
+
+var _getSession = __webpack_require__(9);
+
+var _getSession2 = _interopRequireDefault(_getSession);
+
+var _forgotPassword = __webpack_require__(10);
+
+var _forgotPassword2 = _interopRequireDefault(_forgotPassword);
+
+var _changePassword = __webpack_require__(11);
+
+var _changePassword2 = _interopRequireDefault(_changePassword);
+
+var _config = __webpack_require__(0);
+
+var config = _interopRequireWildcard(_config);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.register = _register2.default;
+exports.confirmation = _confirmation2.default;
+exports.signIn = _authenticate2.default;
+exports.signOut = _signOut2.default;
+exports.getSession = _getSession2.default;
+exports.forgotPassword = _forgotPassword2.default;
+exports.changePassword = _changePassword2.default;
+exports.config = config;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (email, password) {
+  var userPool = (0, _config.getUserPool)();
+
+  var attributeList = [new _amazonCognitoIdentityJs.CognitoUserAttribute({
+    Name: 'email',
+    Value: email
+  })];
+  return new Promise(function (resolve, reject) {
+    userPool.signUp(email, password, attributeList, null, function (err, result) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+var _amazonCognitoIdentityJs = __webpack_require__(1);
+
+var _config = __webpack_require__(0);
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_5__;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (email, code) {
+  var userData = {
+    Username: email,
+    Pool: (0, _config.getUserPool)()
+  };
+
+  var cognitoUser = new _amazonCognitoIdentityJs.CognitoUser(userData);
+
+  return new Promise(function (resolve, reject) {
+    cognitoUser.confirmRegistration(code, true, function (err, result) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
+
+var _amazonCognitoIdentityJs = __webpack_require__(1);
+
+var _config = __webpack_require__(0);
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (username, password) {
+  var authenticationData = {
+    Username: username,
+    Password: password
+  };
+  var authenticationDetails = new _amazonCognitoIdentityJs.AuthenticationDetails(authenticationData);
+
+  var userData = {
+    Username: username,
+    Pool: (0, _config.getUserPool)()
+  };
+
+  var cognitoUser = new _amazonCognitoIdentityJs.CognitoUser(userData);
+
+  return new Promise(function (resolve, reject) {
+    cognitoUser.authenticateUser(authenticationDetails, {
+      onSuccess: function onSuccess(result) {
+        resolve(result);
+      },
+      onFailure: function onFailure(err) {
+        reject(err);
+      }
+    });
+  });
+};
+
+var _amazonCognitoIdentityJs = __webpack_require__(1);
+
+var _config = __webpack_require__(0);
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var cognitoUser = (0, _config.getUser)();
+
+  if (cognitoUser) {
+    cognitoUser.signOut();
+    Promise.resolve();
+  } else {
+    throw new Error('no cognitiveUser value');
+  }
+};
+
+var _config = __webpack_require__(0);
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var cognitoUser = (0, _config.getUser)();
+
+  if (cognitoUser) {
+    return new Promise(function (resolve, reject) {
+      cognitoUser.getSession(function (err, session) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(session);
+        }
+      });
+    });
+  } else {
+    throw new Error('no cognitiveUser value');
+  }
+};
+
+var _config = __webpack_require__(0);
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (username) {
+  var userData = {
+    Username: username,
+    Pool: (0, _config.getUserPool)()
+  };
+
+  var cognitoUser = new _amazonCognitoIdentityJs.CognitoUser(userData);
+
+  return new Promise(function (resolve, reject) {
+    cognitoUser.forgotPassword({
+      onSuccess: function onSuccess(result) {
+        resolve(result);
+      },
+      onFailure: function onFailure(err) {
+        reject(err);
+      }
+    });
+  });
+};
+
+var _amazonCognitoIdentityJs = __webpack_require__(1);
+
+var _config = __webpack_require__(0);
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (username, code, password) {
+  var userData = {
+    Username: username,
+    Pool: (0, _config.getUserPool)()
+  };
+
+  var cognitoUser = new _amazonCognitoIdentityJs.CognitoUser(userData);
+
+  return new Promise(function (resolve, reject) {
+    cognitoUser.confirmPassword(code, password, {
+      onSuccess: function onSuccess(result) {
+        resolve(result);
+      },
+      onFailure: function onFailure(err) {
+        reject(err);
+      }
+    });
+  });
+};
+
+var _amazonCognitoIdentityJs = __webpack_require__(1);
+
+var _config = __webpack_require__(0);
+
+/***/ })
+/******/ ]);
+});
 //# sourceMappingURL=index.js.map
