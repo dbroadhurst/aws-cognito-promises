@@ -1,6 +1,6 @@
 import { CognitoUser, AuthenticationDetails } from 'amazon-cognito-identity-js'
 
-import { getUserPool } from './config'
+import { getUserPool, setCurrentUserSession } from './config'
 
 export default function(username, password) {
   const authenticationData = {
@@ -23,6 +23,14 @@ export default function(username, password) {
       },
       onFailure: function(err) {
         reject(err)
+      },
+      newPasswordRequired: function(userAttributes, requiredAttributes) {
+        setCurrentUserSession(cognitoUser)
+        reject({
+          code: 'PasswordResetRequiredException',
+          message: 'New Password Required',
+          newPasswordRequired: true
+        })
       }
     })
   })

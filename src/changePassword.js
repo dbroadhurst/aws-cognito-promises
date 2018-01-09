@@ -1,4 +1,4 @@
-import { CognitoUser, AuthenticationDetails } from 'amazon-cognito-identity-js'
+import { CognitoUser } from 'amazon-cognito-identity-js'
 
 import { getUserPool } from './config'
 

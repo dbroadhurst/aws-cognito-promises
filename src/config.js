@@ -4,6 +4,7 @@ import { CognitoUserPool } from 'amazon-cognito-identity-js'
 
 let appConfig
 let userPool
+let currentUser
 
 export const set = config => {
   appConfig = config
@@ -29,4 +30,12 @@ export const getUserPool = () => {
 
 export const getUser = () => {
   return userPool.getCurrentUser()
+}
+
+export const setCurrentUserSession = user => {
+  currentUser = user
+}
+
+export const getCurrentUserSession = () => {
+  return currentUser
 }

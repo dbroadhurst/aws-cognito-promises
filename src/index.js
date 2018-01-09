@@ -5,6 +5,7 @@ import signOut from './signOut'
 import getSession from './getSession'
 import forgotPassword from './forgotPassword'
 import changePassword from './changePassword'
+import completeNewPassword from './completeNewPassword'
 import * as config from './config'
 
 export {
@@ -15,5 +16,6 @@ export {
   getSession,
   forgotPassword,
   changePassword,
+  completeNewPassword,
   config
 }
