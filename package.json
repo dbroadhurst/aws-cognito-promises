@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "amazon-cognito-identity-js": "^1.19.0",
-    "aws-sdk": "^2.178.0",
+    "aws-sdk": "^2.177.0",
     "babel-polyfill": "^6.23.0"
   },
   "devDependencies": {
