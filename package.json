@@ -23,9 +23,9 @@
   "homepage": "http://cognito.dbroadhurst.net",
   "license": "MIT",
   "dependencies": {
-    "babel-polyfill": "^6.23.0",
     "amazon-cognito-identity-js": "^1.19.0",
-    "aws-sdk": "^2.94.0"
+    "aws-sdk": "^2.178.0",
+    "babel-polyfill": "^6.23.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
