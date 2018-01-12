@@ -3,7 +3,7 @@ const path = require('path')
 const config = {
   context: path.resolve(__dirname, './src'),
   devtool: 'cheap-module-source-map',
-  entry: ['./index.js'],
+  entry: ['babel-polyfill', './index.js'],
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, './dist'),

@@ -12,18 +12,12 @@
     "build": "webpack -p",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "aws",
-    "cognito",
-    "promises",
-    "users",
-    "account"
-  ],
+  "keywords": ["aws", "cognito", "promises", "users", "account"],
   "author": "David Broadhurst",
   "homepage": "http://cognito.dbroadhurst.net",
   "license": "MIT",
   "dependencies": {
-    "amazon-cognito-identity-js": "1.19.0",
+    "amazon-cognito-identity-js": "1.29.0",
     "aws-sdk": "2.177.0",
     "babel-polyfill": "^6.23.0"
   },
